@@ -1,0 +1,1263 @@
+
+TEAM_CITIZEN = DarkRP.createJob("Citizen", {
+   color = Color(30, 200, 0),
+   model = {
+		"models/player/Group01/Female_01.mdl",
+		"models/player/Group01/Female_02.mdl",
+		"models/player/Group01/Female_03.mdl",
+		"models/player/Group01/Female_04.mdl",
+		"models/player/Group01/Female_06.mdl", 
+		"models/player/group01/male_01.mdl",
+		"models/player/Group01/Male_02.mdl",
+		"models/player/Group01/male_03.mdl",
+		"models/player/Group01/Male_06.mdl",
+		"models/player/Group01/Male_07.mdl",
+		"models/player/Group01/Male_08.mdl",
+		"models/player/Group01/Male_09.mdl" 
+},
+   description = [[The Citizen is the most basic level of society you can hold besides being a hobo. 
+   You have no specific role in city life.
+   You may use /job <name> to give yourself a custom job title.
+
+   Raid: No.
+
+   Purge: Yes]],
+   weapons = {},
+   command = "citizen",
+   max = 0,
+   salary = 25,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = false,
+   category = "The Citizens",
+   sortOrder = 1
+})
+
+TEAM_HOBOK = DarkRP.createJob("Hobo King", {
+   color = Color(100, 80, 0),
+   model = {"models/player/corpse1.mdl"},
+   description = [[You are the ruler of the hobos.
+   You have no home.
+   Beg for your food and money.
+   Sing for everyone who passes to get money.
+   Make your own wooden home somewhere in a corner or outside someone else's door.
+   You may mug and carjack (if the door is left open).
+   You are the king of hobos! Rule them and tell them how to live their lives!
+	
+   Raid: No.
+
+   Purge: Yes.]],
+   weapons = {"weapon_bugbait"},
+   command = "hoboking",
+   max = 1,
+   salary = 0,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = false,
+   hobo = true,
+   category = "The Citizens",
+   sortOrder = 2,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end 
+})
+
+TEAM_HOBO = DarkRP.createJob("Hobo", {
+   color = Color(100, 80, 0),
+   model = {"models/player/corpse1.mdl"},
+   description = [[The lowest member of society. Everybody laughs at you.
+   You have no home.
+   Beg for your food and money.
+   Sing for everyone who passes to get money.
+   Make your own wooden home somewhere in a corner or outside someone else's door.
+   You may mug and carjack (if the car door is left open).
+   The Hobo King is your king, so you must listen to him!
+
+   Raid: No
+
+   Purge: Yes.]],
+   weapons = {"weapon_bugbait"},
+   command = "hobo",
+   max = 10,
+   salary = 0,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = false,
+   hobo = true,
+   category = "The Citizens",
+   sortOrder = 3
+})
+
+TEAM_DJ = DarkRP.createJob("DJ", {
+   color = Color(175, 0, 190),
+   model = {"models/player/daftpunk/daft_gold.mdl"},
+	description = [[The DJ brings the life to the party and has access to all sorts of music! 
+   Get a radio from the store menu!
+	
+   Advert Abilities: Party at [Location]
+	
+   Raid: No.
+	
+   Purge: Yes.]],
+   weapons = {},
+   command = "dj",
+   max = 2,
+   salary = 80,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = true,
+   category = "The Citizens",
+   sortOrder = 7,
+   customCheck = function(ply) return ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end
+})
+
+TEAM_PET = DarkRP.createJob("Pet", {
+   color = Color(160, 82, 45),
+   model = {"models/player_dog_sunglasses.mdl"},
+   description = [[Follow your owner obiediently, 
+   follow your master around, help him in whatever ways possible.
+   Raid: No.
+   
+   Purge: No.]],
+   weapons = {"dogbite"},
+   command = "pet",
+   max = 4,
+   salary = 0,
+   admin = 0,
+   vote = false,
+   category = "The Citizens",
+   sortOrder = 8,
+   candemote = true,
+})
+
+TEAM_PIANOPLAYER = DarkRP.createJob("Piano Player", {
+   color = Color(255, 140, 0, 255),
+   model = {"models/player/elvis_fix/t_leet.mdL"},
+   description = [[You play music all around the city, try to earn some money off of it!]],
+   weapons = {""},
+   command = "pianoplayer",
+   max = 3,
+   salary = 80,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   category = "The Citizens",
+   sortOrder = 9,
+   candemote = true,
+   customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 3600 end,
+})
+------------------------------
+---------Criminal Jobs--------
+------------------------------
+
+TEAM_MASTERTHIEF = DarkRP.createJob("Master Thief", {
+   color = Color(0, 0, 0),
+   model = {"models/player/phoenix.mdl"},
+   description = [[You're the best thief in the world, 'nuff said. 
+   Raid, mug, kidnap or carjack!
+   Make peoples lives a living hell!
+   You have a bigger pocket than any other job (to gold all that loot!).
+   
+   Advert Abilities: Raid, Mug, Kidnap
+   
+   Raid: Yes.
+
+   Solo Raid: Yes.
+	
+   Purge: Yes.]],
+   weapons = {"lockpick","prokeypadcracker","grapplehook"},
+   command = "masterthief",
+   max = 10,
+   salary = 30,
+   admin = 0,
+   vote = false,
+   maxpocket = 12,
+   hasLicense = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 1,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end
+})
+
+TEAM_THIEF = DarkRP.createJob("Thief", {
+   color = Color(100,100, 100),
+   model = {"models/player/arctic.mdl"},
+   description = [[Rob people for all their things! 
+   Raid, mug, kidnap or carjack!
+   Make peoples lives a living hell!
+   
+   Advert Abilities: Raid, Mug, Kidnap
+  
+   Raid: Yes.
+
+   Solo Raid: Yes.
+	
+   Purge: Yes.]],
+   weapons = {"lockpick","keypad_cracker"},
+   command = "thief",
+   max = 10,
+   salary = 20,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 2
+})
+
+TEAM_RAPIST = DarkRP.createJob("Rapist", {
+   color = Color(250, 48, 255, 255),
+   model = {"models/player/monk.mdl"},
+   description = [[You are a molester,
+   a sick man who rapes innocent people of Xelatown.
+   
+   Advert Abilities: I'm going to rape you!
+   
+   Raid: No.
+   
+   Purge: No.]],
+   weapons = {"weapon_rape"},
+   command = "rapist",
+   max = 1,
+   salary = 15,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 3,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end
+})
+
+TEAM_REBELL = DarkRP.createJob("Osama Bin Laden", {
+   color = Color(255, 75, 0),
+   model = {"models/code_gs/osama/osamaplayer.mdl"},
+   description = [[You dont listen to the authority.
+   Lead the Rebels against the government and cause havoc around the city.
+   The Rebels must listen to what you.
+   Only break laws, don't break server rules.
+   
+   Advert Abilities: Allah Ak Bar, Terror!
+
+   Raid: Only Police Affiliated Places.
+	
+   Purge: Yes.]],
+   weapons = {"lockpick","keypad_cracker","weapon_jihadbomb"},
+   command = "rebell",
+   max = 1,
+   salary = 5,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = true,
+   category = "Criminals",
+   sortOrder = 4,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end
+})
+
+TEAM_REBEL = DarkRP.createJob("Terrorist", {
+   color = Color(255, 40, 0),
+   model = {"models/player/kuma/alqaeda_commando.mdl"},
+   description = [[The lowest person of the Rebel group.
+   Rebel against the government and cause havoc around the city.
+   Only break laws, don't break any server rules.
+   Listen to what the Rebel Leader tells you to, they are your boss.
+   
+   Advert Abilities: Terror!
+
+   Raid: Only with other rebel leader.
+
+   Purge: Yes.]],
+   weapons = {},
+   command = "rebel",
+   max = 6,
+   salary = 5,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 5
+})
+
+TEAM_BLOODSLEADER = DarkRP.createJob("Bloods Leader", {
+   color = Color(190, 0, 0),
+   model = {"models/player/bloodz/slow_1.mdl"},
+   description = [[Mug and harass people!
+   you're the king of the streets.
+   
+   Advert Abilities: Raid, Mug, Kidnap
+   
+   Raid: Yes. 
+   
+   Solo Raid: Yes.
+   
+   Purge: Yes.]],
+   weapons = {"lockpick","keypad_cracker","tom_p99"},
+   command = "bloodl",
+   max = 1,
+   salary = 45,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = true,
+   category = "Criminals",
+   sortOrder = 6,
+   customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 3600 end,
+})
+
+TEAM_BLOODS = DarkRP.createJob("Blood", {
+   color = Color(190, 0, 0),
+   model = {"models/player/bloodz/slow_2.mdl"},
+   description = [[You work beside your leader.
+   He tells you what to do.
+   You sell drugs for him.
+   You kill for him.
+   
+   Advert Abilities: Raid, Mug, Kidnap
+   
+   Raid: Yes.
+   
+   Solo Raid: Yes.
+   
+   Purge: Yes]],
+   weapons = {"lockpick","keypad_cracker","tom_p99"},
+   command = "bloodm",
+   max = 6,
+   salary = 20,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 7,
+   customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 3600 end,
+})
+
+TEAM_CRIPSLEADER = DarkRP.createJob("Crips Leader", {
+   color = Color(30, 0, 175),
+   model = {"models/player/cripz/slow_1.mdl"},
+   description = [[You harass the innocent people of the streets.
+   You're a ludicris gang.
+   You fight, rob, kill, raid
+   You lead all your boys 
+   
+   Advert Abilities: Raid, Mug, Kidnap
+   
+   Raid: Yes.
+   
+   Solo Raid: Yes.
+   
+   Purge: Yes.]],
+   weapons = {"lockpick","keypad_cracker","tom_p99"},
+   command = "cripsl",
+   max = 1,
+   salary = 45,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   candemote = true,
+   category = "Criminals",
+   sortOrder = 8,
+   customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 3600 end,
+})
+
+TEAM_CRIP = DarkRP.createJob("Crip", {
+   color = Color(30, 0, 175),
+   model = {"models/player/cripz/slow_2.mdl"},
+   description = [[You follow your leader.
+   You follow his orders.
+   You are his slave, and you sell for him
+   
+   Advert Abilities: Raid, Mug, Kidnap
+   
+   Raid: Yes.
+   
+   Solo Raid: Yes.
+   
+   Purge: Yes.]],
+   weapons = {"lockpick","keypad_cracker","tom_p99"},
+   command = "cripslm",
+   max = 6,
+   salary = 20,
+   admin = 0,
+   vote = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 9,
+   customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 3600 end,
+})
+
+TEAM_ABDUCTOR = DarkRP.createJob("Abductor", {
+   color = Color(35, 35, 35),
+   model = {"models/player/spike/NoscopedJFK.mdl"},
+   description = [[Abduct you weak victims
+   and keep them to your self!
+   
+   Raid: Yes.
+   
+   Solo Raid: Yes.
+   
+   Purge: Yes.]],
+   weapons = {"lockpick","keypad_cracker","weapon_r_handcuffs"},
+   command = "abductor",
+   max = 2,
+   salary = 65,
+   admin = 0,
+   vote = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 10,
+   customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 3600 end,
+})
+
+TEAM_BREACHER = DarkRP.createJob("Breacher", {
+   color = Color(100, 0, 0),
+   model = {"models/player/kuma/alqaeda_commando.mdl"},
+   description = [[Raid with your un-like other tools
+   rule the raid game with what you got!
+   
+   Raid: Yes.
+   
+   Solo Raid: Yes.
+   
+   Purge: Yes.]],
+   weapons = {"weapon_sh_doorcharge", "m9k_mossberg590"},
+   command = "breacher",
+   max = 2,
+   salary = 100,
+   admin = 0,
+   vote = true,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 11,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end 
+})
+
+TEAM_PURGER = DarkRP.createJob("VIP Purger", {
+   color = Color(10, 10, 10),
+   model = {"models/player/spike/NoscopedJFK.mdl"},
+   description = [[You spawn with weapons!
+   
+   Raid: Yes. -- Only During Purge
+   
+   Solo Raid: Yes. -- Only During Purge
+   
+   Purge: Yes.]],
+   weapons = {"m9k_ump45", "m9k_glock", "m9k_knife"},
+   command = "purger",
+   max = 6,
+   salary = 80,
+   admin = 0,
+   vote = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 12,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end 
+})
+
+TEAM_ASSASIN = DarkRP.createJob("Assassin", {
+   color = Color(0, 0, 0),
+   model = {"models/mark2580/borderlands2/zero_player.mdl"},
+   description = [[Kill your target 
+   Without detection 
+   
+   Raid: Yes. -- Only For Kill
+   
+   Solo Raid: Yes. -- Only For Kill
+   
+   Purge: Yes.]],
+   weapons = {"m9k_intervention","m9k_knife","m9k_dbarrel"},
+   command = "Assassin",
+   max = 3,
+   salary = 110,
+   admin = 0,
+   vote = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 13,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end 
+})
+
+TEAM_PYRO = DarkRP.createJob("Pyro", {
+   color = Color(200, 115, 0),
+   model = {"odels/player/skirmisher.mdl"},
+   description = [[FIre! Fire! Fire!
+   Purge - Yes
+   
+   Raid/solo raid - Yes
+   
+   mug - no]],
+   weapons = {"weapon_avpflamer"},
+   command = "pyro",
+   max = 2,
+   salary = 60,
+   admin = 0,
+   vote = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 14,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end
+})
+
+TEAM_HOOKER = DarkRP.createJob("Hooker", {
+   color = Color(180, 0, 150),
+   model = {"models/player/lara_croft.mdl"},
+   description = [[Have sex to make money
+   be good in bed to keep you customers!
+   
+   Purge - Yes
+   
+   Raid/solo raid - no
+   
+   mug - no]],
+   weapons = {"weapon_hooker"},
+   command = "hooker",
+   max = 2,
+   salary = 10,
+   admin = 0,
+   vote = false,
+   candemote = false,
+   category = "Criminals",
+   sortOrder = 15
+})
+------------------------------
+---------Mafia Jobs-----------
+------------------------------
+
+TEAM_SYNDBOSS = DarkRP.createJob("Syndicate Mob Boss", {
+    color = Color(100, 0, 10, 255),
+    model = {"models/player/tuxmale_01player.mdl",
+	"models/player/tuxmale_02player.mdl",
+	"models/player/tuxmale_03player.mdl",
+	"models/player/tuxmale_04player.mdl",
+	"models/player/tuxmale_05player.mdl",
+	"models/player/tuxmale_06player.mdl",
+	"models/player/tuxmale_07player.mdl",
+	"models/player/tuxmale_08player.mdl",
+	"models/player/tuxmale_09player.mdl"},
+    description = [[The Syndicate Mob Boss is the boss of the Syndicate gangsters. 
+	He has the power to unarrest a player in jail and he has the power to break in to someones home using his lockpick. 
+	He may declare war on another gang or the government.]],
+    weapons = {"m9k_luger","keypad_cracker","lockpick","unarrest_stick"},
+    command = "syndicateboss",
+    max = 1,
+    salary = 100,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "The Gangs",
+    setOrder = "1"
+})
+
+TEAM_SYNDGANG = DarkRP.createJob("Syndicate Gangster", {
+    color = Color(100, 0, 10, 255),
+    model = {"models/player/tuxmale_01player.mdl",
+	"models/player/tuxmale_02player.mdl",
+	"models/player/tuxmale_03player.mdl",
+	"models/player/tuxmale_04player.mdl",
+	"models/player/tuxmale_05player.mdl",
+	"models/player/tuxmale_06player.mdl",
+	"models/player/tuxmale_07player.mdl",
+	"models/player/tuxmale_08player.mdl",
+	"models/player/tuxmale_09player.mdl"},
+    description = [[The Syndicate gangsters are the lowest level of crime. 
+	They must follow their Mob Boss' commands. If they fail to do so, they may be punished.]],
+    weapons = {"lockpick","keypad_cracker"},
+    command = "syndicategangster",
+    max = 5,
+    salary = 80,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "The Gangs",
+    setOrder = "2"
+})
+
+TEAM_MAFIABOSS = DarkRP.createJob("Mafia Mob Boss", {
+    color = Color(60, 60, 60, 255),
+    model = {"models/player/tuxmale_01player.mdl",
+	"models/player/tuxmale_02player.mdl",
+	"models/player/tuxmale_03player.mdl",
+	"models/player/tuxmale_04player.mdl",
+	"models/player/tuxmale_05player.mdl",
+	"models/player/tuxmale_06player.mdl",
+	"models/player/tuxmale_07player.mdl",
+	"models/player/tuxmale_08player.mdl",
+	"models/player/tuxmale_09player.mdl"},
+    description = [[The Mafia Mob Boss is the boss of the Mafia gangsters. He has the power to unarrest a player in jail and he has the power to break in to someones home using his lockpick. 
+	He may declare war on another gang or the government.]],
+    weapons = {"m9k_luger","keypad_cracker","lockpick","unarrest_stick"},
+    command = "mafiamobboss",
+    max = 1,
+    salary = 100,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "The Gangs",
+    setOrder = "3"
+})
+
+TEAM_MAFIAGANG = DarkRP.createJob("Mafia Gangster", {
+    color = Color(60, 60, 60, 255),
+    model = {"models/player/tuxmale_01player.mdl",
+	"models/player/tuxmale_02player.mdl",
+	"models/player/tuxmale_03player.mdl",
+	"models/player/tuxmale_04player.mdl",
+	"models/player/tuxmale_05player.mdl",
+	"models/player/tuxmale_06player.mdl",
+	"models/player/tuxmale_07player.mdl",
+	"models/player/tuxmale_08player.mdl",
+	"models/player/tuxmale_09player.mdl"},
+    description = [[The Mafia gangsters are the lowest level of crime. They must follow their Mob Boss' commands. 
+	If they fail to do so, they may be punished.]],
+    weapons = {"lockpick","keypad_cracker"},
+    command = "mafiagangster",
+    max = 5,
+    salary = 80,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "The Gangs",
+    setOrder = "4"
+})
+
+TEAM_ALIENRL = DarkRP.createJob("Alien Raiders Boss", {
+    color = Color(75, 200, 0, 255),
+    model = {"models/risenshine/gang_beast.mdl"},
+    description = [[You come from another planet to steal
+	from everyone in the city!
+	
+	Raid: Yes
+	
+	Mug: Yes
+	
+	Kidnap: Yes
+	
+	Solo Raid: Yes]],
+    weapons = {"keypad_cracker","lockpick"},
+    command = "alienraiderl",
+    max = 1,
+    salary = 100,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "The Gangs",
+    setOrder = "5"
+})
+
+TEAM_ALIENR = DarkRP.createJob("Alien Raider", {
+    color = Color(75, 200, 0, 255),
+    model = {"models/risenshine/gang_beast.mdl"},
+    description = [[You come from another planet to steal
+	from everyone in the city!
+	
+	Raid: Yes
+	
+	Mug: Yes
+	
+	Kidnap: Yes
+	
+	Solo Raid: Yes]],
+    weapons = {"keypad_cracker","lockpick"},
+    command = "alienraider",
+    max = 4,
+    salary = 20,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "The Gangs",
+    setOrder = "6"
+})
+
+------------------------------
+---------Merchant Jobs--------
+------------------------------
+
+TEAM_GUN = DarkRP.createJob("Gun Dealer", {
+   color = Color(255, 170, 0),
+   model = {"models/player/monk.mdl"},
+   description = [[A Gun Dealer is the only person who can sell guns to other people.
+   You must set up a shop and may not base with another Gun Dealer or any criminal. 
+   Make sure you aren't caught selling illegal firearms to the public! You might get arrested! 
+
+   Raid: No.
+
+   Purge: Yes.]],
+   weapons = {},
+   command = "gundealer",
+   max = 5,
+   salary = 20,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   candemote = true,
+   category = "Merchants",
+   sortOrder = 1
+})
+
+TEAM_BLACKMARKET = DarkRP.createJob("Black Market Dealer", {
+   color = Color(160, 70, 255),
+    model = {"models/player/p2_chell.mdl"},
+    description = [[ You sell highly lethal & illegal weapons.
+	The sales must be discrete]],
+    weapons = {},
+    command = "bmd",
+    max = 5, 
+    salary = 50,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Merchants",
+    setOrder = "2",
+    customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end 
+})
+
+TEAM_DRUG = DarkRP.createJob("Drug Manufacturer", {
+    color = Color(0, 100, 60, 255),
+    model = {"models/DxN/cod_ghosts/hazmat_pm.mdl"},
+    description = [[ Mass produces various kinds of drugs. 
+	You may choose to sell these individually or make a deal with the local mob.]],
+    weapons = {},
+    command = "drugd",
+    max = 4, 
+    salary = 40,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Merchants",
+    setOrder = "3"
+})
+
+TEAM_MEDIC = DarkRP.createJob("Medic", {
+    color = Color(0, 70, 150, 255),
+    model = {"models/player/Group03m/female_01.mdl",
+	"models/player/Group03m/female_02.mdl",
+	"models/player/Group03m/female_03.mdl",
+	"models/player/Group03m/male_03.mdl",
+	"models/player/Group03m/male_04.mdl",
+	"models/player/Group03m/male_02.mdl",
+	"models/player/Group03m/male_09.mdl"},
+    description = [[ You follow your team to heal!
+	Raid = Yes
+	Solo Raid = NO!
+    Mug = No
+	Kidnap = No]],
+    weapons = {"weapon_medkit"},
+    command = "medic",
+    max = 4, 
+    salary = 50,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Merchants",
+    setOrder = "4"
+})
+
+------------------------------
+---------Police Jobs----------
+------------------------------
+TEAM_MAYOR = DarkRP.createJob("Mayor", {
+    color = Color(150, 20, 20, 255),
+    model = {"models/player/breen.mdl"},
+    description = [[The Mayor of the city creates laws to govern the city.
+    If you are the mayor you may create and accept warrants.
+    Type /wanted <name>  to warrant a player.
+    Type /jailpos to set the Jail Position.
+    Type /lockdown initiate a lockdown of the city.
+    Everyone must be inside during a lockdown.
+    The cops patrol the area.
+    /unlockdown to end a lockdown]],
+    weapons = {"arrest_stick","unarrest_stick"},
+    command = "mayor",
+    max = 1,
+    salary = 120,
+    admin = 0,
+    vote = true,
+    hasLicense = false,
+    mayor = true,
+    category = "Government",
+    setOrder = "1",
+    customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 7200 end,
+})
+
+TEAM_CP = DarkRP.createJob("Civil Protection", {
+    color = Color(25, 25, 170, 255),
+    model = {"models/player/police.mdl", "models/player/police_fem.mdl"},
+    description = [[The Civil Protection (CP) are the protectors of every citizen in the city. They have the power of putting a criminal in prison, making criminals wanted, and placing search warrants on a citizen's home.
+	They have the ability to go corrupt.]],
+    weapons = {"arrest_stick", "unarrest_stick","bb_usp_alt", "stunstick","door_ram","weaponchecker","weapon_r_handcuffs"},
+    command = "civilprot",
+    max = 8, 
+    salary = 70,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Government",
+    setOrder = "2",
+    customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 7200 end,
+})
+
+TEAM_SWAT = DarkRP.createJob("SWAT Officer", {
+    color = Color(25, 25, 170, 255),
+    model = {"models/player/swat.mdl"},
+    description = [[SWAT Officers are professional law enforcers. 
+	Like the CP, they have the power to arrest, want, and place warrants, along with better equipment for doing so.]],
+    weapons = {"arrest_stick", "unarrest_stick","bb_usp_alt","bb_m4a1_alt","stunstick","door_ram","weaponchecker","weapon_r_handcuffs"},
+    command = "swat",
+    max = 6, 
+    salary = 100,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Government",
+    setOrder = "3",
+    customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 7200 end,
+})
+
+TEAM_FBI = DarkRP.createJob("FBI", {
+    color = Color(25, 25, 170, 255),
+    model = {"models/player/police.mdl", "models/player/police_fem.mdl"},
+    description = [[FBI government officials works along side the government. 
+	They go undercover to compromise illegal activity around the city. They only take orders from the Mayor.]],
+    weapons = {"arrest_stick", "unarrest_stick","bb_usp_alt","stunstick","door_ram","weaponchecker","weapon_r_handcuffs"},
+    command = "fbi",
+    max = 5, 
+    salary = 110,
+    admin = 0,
+    vote = false,
+    hasLicense = false,
+    category = "Government",
+    setOrder = "4",
+    customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 7200 end,
+})
+
+TEAM_RIOT = DarkRP.createJob("Riot Control", {
+   color = Color(0, 30, 100),
+   model = {"models/player/swat.mdl"},
+   description = [[You are RIOT control, you help stop
+   crowds, gun fights or gang wars and shoot outs.
+   Raid: No.
+
+   Purge: No.]],
+   weapons = {"arrest_stick","unarrest_stick","m9k_usp","m9k_tar21","stunstick","door_ram","weaponchecker","weapon_policeshield","stungun","weapon_r_handcuffs"},
+   command = "riot",
+   max = 4,
+   salary = 100,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   candemote = true,
+   category = "Government",
+   sortOrder = 5,
+   PlayerSpawn = function(ply) ply:SetArmor(100) end,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end
+})
+------------------------------
+---------Hitman Jobs----------
+------------------------------
+
+TEAM_HITMAN = DarkRP.createJob("Hitman", {
+   color = Color(180, 0, 0),
+   model = {"models/player/gman_high.mdl"},
+   description = [[They give you the dough, you end someones life. Simple enough, no?
+   Cannot take random hits / place hits on the same person over and over within a certain time interval.
+   Do not accept hits from any government officials.
+   
+   Advert Abilities: Hit Accepted, Hit Complete, Hitman Raid
+   
+   Raid: Only if target is inside building.
+
+   Solo Raid: Only if target is inside building.
+
+   Purge: Yes.]],
+   weapons = {"lockpick","m9k_svu"},
+   command = "hitman",
+   max = 2,
+   salary = 50,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   candemote = true,
+   category = "Hired Killers",
+   sortOrder = 1,
+   customCheck = function(ply) return ply:IsSuperAdmin() or (ply:IsUserGroup("Respected") and tonumber(ply:GetUTimeTotalTime()) >= 0) or tonumber(ply:GetUTimeTotalTime()) >= 7200 end,
+   
+})
+
+TEAM_HITPRO = DarkRP.createJob("Hitman Pro", {
+   color = Color(180, 0, 0),
+   model = {"models/player/gman_high.mdl"},
+   description = [[They give you the dough, you end a life!
+   Cannot place random hits / place hits on the same person over and over within a certain time interval.
+   Do not accept hits from any government officials.
+
+   Advert Abilities: Hit Accepted, Hit Complete, Hitman Raid
+   
+   Raid: Only if target is inside building.
+
+   Solo Raid: Only if target is inside building.
+
+   Purge: Yes.]],
+   weapons = {"lockpick", "m9k_svu","m9k_mp7","grapplehook"},
+   command = "hitmanpro",
+   max = 2,
+   salary = 60,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   candemote = true,
+   category = "Hired Killers",
+   sortOrder = 2,
+   customCheck = function(ply) return ply:GetUserGroup() == "bronze" or ply:GetUserGroup() == "silver" or ply:GetUserGroup() == "gold" or ply:GetUserGroup() == "enforcer" or ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end
+})
+
+
+------------------------------
+---------Admin Jobs-----------
+------------------------------
+
+TEAM_ADMIN = DarkRP.createJob("Admin On Duty", {
+   color = Color(180, 0, 0),
+   model = {"models/player/Combine_Super_Soldier.mdl"},
+   description = [[Using this class indicates you are not Roleplaying and that you are assisting other players.]],
+   weapons = {"weaponchecker","weapon_keypadchecker","arrest_stick","unarrest_stick"},
+   command = "admin",
+   max = 100,
+   salary = 0,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   candemote = false,
+   category = "Staff",
+   sortOrder = 1,
+   customCheck = function(ply) return ply:GetUserGroup() == "moderator" or ply:IsAdmin() or ply:IsSuperAdmin() end 
+})
+
+TEAM_ENFORCER = DarkRP.createJob("Enforcer", {
+   color = Color(180, 0, 0),
+   model = {"models/player/Combine_Super_Soldier.mdl"},
+   description = [[Using this class indicates you are not Roleplaying and that you are assisting other players.]],
+   weapons = {},
+   command = "enforcer",
+   max = 100,
+   salary = 0,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   candemote = false,
+   category = "Staff",
+   sortOrder = 2,
+   customCheck = function(ply) return ply:GetUserGroup() == "enforcer" end 
+})
+
+TEAM_SUPER_THIEF = DarkRP.createJob("Super Thief ", {
+   color = Color(115,1,20,255),
+   model = {"models/player/pink_soldier_fix/ct_urban.mdl"},
+   description = [[ You're a badass Thief ]],
+   weapons = {"m9k_dbarrel","m9k_psg1","lockpick","keypad_cracker","grapplehook","m9k_an94","m9k_usas"},
+   command = "super",
+   max = 2,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:0:55283524" or 
+ply:SteamID() == "STEAM_0:0:46597348" end,
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+TEAM_MYSTERIOUS_STRANGER = DarkRP.createJob("Mysterious Stranger", {
+   color = Color(8,50,191,255),
+   model = {"models/player/trenchcoat/slow.mdl"},
+   description = [[ With this Perk, you have gained the attention of a Mysterious Stranger, who will appear to help you from time to time. If your ally is lost in combat, do not expect him or her to be replaced.
+   Raid - Yes
+   Mug - Yes
+   Cop - No
+   Car Jack - Yes
+   Kidnap - Yes ]],
+   weapons = {"m9k_model500","m9k_barret_m82"},
+   command = "fallout",
+   max = 1,
+   salary = 101,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:1:120589137" end,
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+TEAM_MEGA_THIEF = DarkRP.createJob("Mega Thief", {
+    color = Color(9,21,186,255),
+    model = {"models/player/daftpunk/daft_gold.mdl"},
+   description = [[ Mega Thief of the world, they make your life like a living HELL! Mug, Kidnap, Printers, Car jack, etc. Big pocket to tack home the money!
+Raid: Yes
+Solo Raid: Yes
+Purge: Yes
+Criminal: Yes
+
+Weapons:
+Scar
+]],
+   weapons = {"m9k_scar","grapplehook","keypad_cracker","lockpick","m9k_an94","m9k_jackhammer","m9k_deagle","weapon_spraymhs","weapon_rape","med_kit","m9k_ares_shrike","m9k_svu"},
+   command = "MegaThief",
+   max = 3,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:1:99125933" or ply:SteamID() == "STEAM_0:0:60737009" or ply:SteamID() == "STEAM_0:0:77748914" end,
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+
+TEAM_ICOCKIZUU = DarkRP.createJob("Icockizuu", {
+   color = Color(235,117,235,255),
+   model = {"models/player/Group01/female_06.mdl"},
+   description = [[ ikiiiiiiii ]],
+   weapons = {"m9k_an94","m9k_1887winchester","m9k_barret_m82","lockpick","med_kit","keypad_cracker","grapplehook"},
+   command = "cockuu",
+   max = 3,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:0:144963802" or ply:SteamID() == "STEAM_0:1:109300066" end,
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+TEAM_PRESIDENT = DarkRP.createJob("President", {
+   color = Color(25,20,166,255),
+   model = {"models/player/daftpunk/daft_gold.mdl"},
+   description = [[ You are the president!! You are the boss of all goverment in cluding mayor! You may arrest or kill any government members including the mayor at any time for any reason! ]],
+   weapons = {"bb_deagle_alt","m9k_val","m9k_f2000","m9k_thompson","bb_tmp","m9k_striker12","m9k_dbarrel","m9k_usas","m9k_svu","m9k_psg1","arrest_stick","unarrest_stick","door_ram","lockpick","med_kit","stunstick","keypad_cracker","grapplehook","weapon_r_handcuffs"},
+   command = "dj6president",
+   max = 1,
+   salary = 201,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:0:123125888" end,
+   customCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs" 
+})
+
+TEAM_NIGHTSHADE = DarkRP.createJob("NightShade", {
+   color = Color(40,40,112,255),
+   model = {"models/player/Group01/male_06.mdl","models/player/trenchcoat/slow.mdl","models/player_dog_sunglasses.mdl","models/stalkernb/sunrise_symmetry.mdl"},
+   description = [[ Its too OP ]],
+   weapons = {"m9k_an94","m9k_l85","m9k_spas12","m9k_barret_m82","m9k_sl8","lockpick","m9k_rpg7","bb_ak47_alt","keypad_cracker","grapplehook","m9k_minigun","m9k_luger","m9k_ragingbull","weapon_slam","weapon_sh_doorcharge","m9k_damascus","m9k_m24","m9k_m202","bb_css_smoke_alt","weapon_lightsaber","m9k_dbarrel","bb_usp_alt","m9k_mp5sd","bb_mac10_alt","m9k_intervention"},
+   command = "NightShade",
+   max = 5,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:1:68020871" or -- Exotic
+ply:SteamID() == "STEAM_0:0:166432825" or -- Jose Stainbush
+ply:SteamID() == "STEAM_0:1:109300066" or -- 【 Sausage 】
+ply:SteamID() == "STEAM_0:0:89251616" or -- OgE Ghost
+ply:SteamID() == "STEAM_0:1:158558395" or -- Josh732
+ply:SteamID() == "STEAM_0:1:150144842" or -- TheOnlyPanther
+ply:SteamID() == "STEAM_0:1:110475411" or -- joe ragen
+ply:SteamID() == "STEAM_0:1:67995436" end, -- Triggered
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+
+TEAM_STONED_DOGGY = DarkRP.createJob("Stoned Doggy", {
+   color = Color(238,255,0,255),
+   model = {"models/player_dog.mdl", "models/player_dog_sunglasses.mdl"},
+   description = [[ He was a normal dog who has succumbed to heroine and became part of a statue due to it.
+Able to Raid, Mug, etc. same as thief but better.  ]],
+   weapons = {"lockpick","weapon_r_handcuffs","stungun","weapon_sh_doorcharge","weapon_policeshield","grapplehook","prokeypadcracker","bb_css_c4_alt","m9k_suicide_bomb"},
+   command = "Doggy",
+   max = 1,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:0:84849205" end, -- WolfCoin
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+TEAM_MERC = DarkRP.createJob("Merc", {
+   color = Color(30,176,108,255),
+   model = {"models/immigrant/outlast/walrider_pm.mdl", "models/player_dog_sunglasses.mdl","models/player/Group01/male_06.mdl"},
+   description = [[ Raid, kill, repeat ]],
+   weapons = {"m9k_an94","m9k_barret_m82","m9k_spas12","weapon_sh_doorcharge","lockpick","m9k_minigun","m9k_m202","grapplehook","keypad_cracker", "weapon_lightsaber"},
+   command = "lv",
+   max = 2,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:0:46606104" or -- govector | WTC
+ply:SteamID() == "STEAM_0:1:110475411" or -- Joe Rogan
+ply:SteamID() == "STEAM_0:1:194970484" or -- Retard Hulk
+ply:SteamID() == "STEAM_0:1:127638342" or -- The Running Baboon
+ply:SteamID() == "STEAM_0:0:93721232" or -- BADASSALBONDIGA シ
+ply:SteamID() == "STEAM_0:0:152287609" or -- CombatHDtm
+ply:SteamID() == "STEAM_0:0:170307961" or -- Logich
+ply:SteamID() == "STEAM_0:0:137247188"end, -- ╰☆╮★Natsuno★╰☆╮
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+TEAM_DADDY = DarkRP.createJob("Daddy", {
+   color = Color(0,146,250,255),
+   model = {"models/player/Group01/male_06.mdl"},
+   description = [[ OgE is love. OgE is life. ]],
+   weapons = {"m9k_svu","m9k_minigun","m9k_spas12","m9k_nerve_gas","m9k_rpg7","lockpick","med_kit","weapon_sh_doorcharge"},
+   command = "Aug",
+   max = 2,							
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = true,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:0:50129320" or -- Inaugerate
+ply:SteamID() == "STEAM_0:0:104666218" or -- Blazegamer123
+ply:SteamID() == "STEAM_0:1:85221598" or -- Weeaboo
+ply:SteamID() == "STEAM_0:0:46825267" end, -- (TM) TrapStar
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+
+TEAM_PAPI = DarkRP.createJob("Papi", {
+   color = Color(240,10,10,255),
+   model = {"models/player/Group01/male_06.mdl"},
+   description = [[ can purge, raid, mug,  and kidnap ]],
+   weapons = {"m9k_an94","lockpick","med_kit","m9k_svu","m9k_spas12"},
+   command = "papi",
+   max = 5,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:0:202180569" or -- BOT Dumbass
+ply:SteamID() == "STEAM_0:0:201962696" or -- OG | Hutch
+ply:SteamID() == "STEAM_0:0:46825267" or  -- (TM) TrapStar
+ply:SteamID() == "STEAM_0:1:67995436" or -- Triggered
+ply:SteamID() == "STEAM_0:1:158558395" end, -- Josh732
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+TEAM_TIMEASSASSIN = DarkRP.createJob("TimeAssassin", {
+   color = Color(94,0,255,255),
+   model = {"models/player/skeleton.mdl","models/player/moonmankkk.mdl","models/nikout/warframe/ash.mdl"},
+   description = [[ We are Assassins of the night! We fucken purge! Special 
+   commands: ~Raid ~Terror ~Kidnap ~Mug ~Carjack ~Rob Bank ~Steal  ]],
+   weapons = {"m9k_an94","m9k_barret_m82","m9k_minigun","m9k_spas12","m9k_m202","m9k_nerve_gas","lockpick","weapon_sh_doorcharge","grapplehook","prokeypadcracker","m9k_orbital_strike","weapon_r_handcuffs","med_kit","m9k_ragingbull","m9k_luger","m9k_damascus"},
+   command = "ta",
+   max = 10,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:1:113180143" or  -- DarkXion
+ply:SteamID() == "STEAM_0:0:137247188" or -- ╰☆╮★NATSUNO★╰☆╮
+ply:SteamID() == "STEAM_0:1:102082365" or -- NippleSquisher33
+ply:SteamID() == "STEAM_0:0:166432825" or -- Jose Stainbush
+ply:SteamID() == "STEAM_0:0:111854825" or -- Subie
+ply:SteamID() == "STEAM_0:0:201962696" or -- OG | Hutch
+ply:SteamID() == "STEAM_0:1:80282994" end, -- Kitten
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+TEAM_SHADOWWALKER = DarkRP.createJob("ShadowWalker", {
+   color = Color(3,0,0,255),
+   model = {"models/player/skeleton.mdl","models/player_dog_sunglasses.mdl"},
+   description = [[ You won't see him coming, and you won't like it once he kills you. ]],
+   weapons = {"m9k_scar","m9k_an94","m9k_barret_m82","m9k_minigun","m9k_spas12","m9k_ragingbull","bb_ump45_alt","m9k_knife","m9k_rpg7","lockpick","weapon_sh_doorcharge","prokeypadcracker","weapon_slam"},
+   command = "ShadowWalker",
+   max = 1,
+   salary = 1,
+   admin = 0,
+   vote = false,
+   hasLicense = false,
+   customCheck = function(ply) return ply:SteamID() == "STEAM_0:1:122142253" or
+ply:SteamID() == "STEAM_0:0:82506520" or
+ply:SteamID() == "STEAM_0:0:145118213" or
+ply:SteamID() == "STEAM_0:1:63240058" end,
+   CustomCheckFailMsg = "This is a custom donator job. You are not authorised to join this job",
+   category = "Custom Jobs"
+})
+
+TEAM_DRUGCOOK = DarkRP.createJob("Drug Cook", {
+	color = Color(189, 216, 106, 255),
+	--model = "models/player/cbrnplayer.mdl",
+	model = "models/player/hostage/hostage_01.mdl",
+	description = [[''Norman, Norman let's cook.''
+	
+	The Drug Cook is an active job where a manual process of drug production is possible.
+	You can either use the drugs or sell them for profit.]],
+	weapons = {"weapon_fists"},
+	command = "drugcook",
+	max = 2,
+	salary = GAMEMODE.Config.normalsalary,
+	admin = 0,
+	vote = false,
+	hasLicense = false,
+})
+
+TEAM_HARAMBE = DarkRP.createJob("Harambe", {
+    color = Color(130, 123, 123, 255),
+    model = {},
+    description = [[The Gorilla God]],
+    weapons = {"sswep_harambe"},
+    command = "harambe",
+    max = 1,
+    salary = 1000,
+    admin = ,
+    vote = ,
+    hasLicense = ,
+    candemote = ,
+    category = "Custom Class",
+    PlayerSpawn = function(ply)
+        ply:SetMaxHealth(1000)
+        ply:SetHealth(1000)
+        ply:SetArmor(150)
+    end
+})
+--[[---------------------------------------------------------------------------
+Default Team|
+---------------------------------------------------------------------------]]
+GAMEMODE.DefaultTeam = TEAM_CITIZEN
+
+--[[---------------------------------------------------------------------------
+Jobs That Have Access To Police
+---------------------------------------------------------------------------]]
+GAMEMODE.CivilProtection = {
+	[TEAM_MAYOR] = true,
+	[TEAM_CP] = true,
+	[TEAM_FBI] = true,
+	[TEAM_RIOT] = true,
+	[TEAM_SWAT] = true
+}
+
+--[[---------------------------------------------------------------------------
+Jobs That Have Access To Hitman Menu
+---------------------------------------------------------------------------]]
+DarkRP.addHitmanTeam(TEAM_HITMAN)
+DarkRP.addHitmanTeam(TEAM_HITPRO)
+DarkRP.addHitmanTeam(TEAM_ASSASIN)
+DarkRP.addHitmanTeam(TEAM_TIMEASSASSIN)
+
+
+
+
+
+
+--[[---------------------------------------------------------------------------
+Define which team joining players spawn into and what team you change to if demoted
+---------------------------------------------------------------------------]]
+GAMEMODE.DefaultTeam = TEAM_CITIZEN
